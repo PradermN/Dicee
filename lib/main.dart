@@ -4,9 +4,20 @@ import 'package:flutter/material.dart';
 void main() {
   return runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.red,
-        appBar: AppBar(title: Text('Dicee'), backgroundColor: Colors.red),
+        backgroundColor: Colors.teal.shade900,
+        appBar: AppBar(
+          title: Center(child:
+          Text(
+            'Dicee',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24.0,
+            ),
+            )),
+          backgroundColor: Colors.teal.shade500,
+        ),
         body: DicePage(),
       ),
     ),
@@ -34,23 +45,41 @@ class _DicePageState extends State<DicePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Expanded(
-            child: TextButton(
-              onPressed: () {
-                changeDiceFace();
-              },
-              child: Image(image: AssetImage('images/dice$leftDiceNumber.png')),
+          Text(
+            'Tap on a die to roll!',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          Expanded(
-            child: TextButton(
-              onPressed: () {
-                changeDiceFace();
-              },
-              child: Image(image: AssetImage('images/dice$rightDiceNumber.png')),
-            ),
+          SizedBox(height: 50.0),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    changeDiceFace();
+                  },
+                  child: Image(
+                    image: AssetImage('images/dice$leftDiceNumber.png'),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    changeDiceFace();
+                  },
+                  child: Image(
+                    image: AssetImage('images/dice$rightDiceNumber.png'),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
